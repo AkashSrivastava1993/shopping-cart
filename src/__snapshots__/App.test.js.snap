@@ -1,0 +1,115 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders 1`] = `
+<DocumentFragment>
+  <div>
+    <header
+      class="block row center"
+    >
+      <div>
+        <a
+          href="#/"
+        >
+          <h1>
+            Shopping Cart
+          </h1>
+        </a>
+      </div>
+      <div>
+        <a
+          href="#/cart"
+        >
+          Cart 
+        </a>
+         
+      </div>
+    </header>
+    <div
+      class="row"
+    >
+      <main
+        class="block col-2"
+      >
+        <h2>
+          Products
+        </h2>
+        <input
+          id="myInput"
+          placeholder="Search for products..."
+          type="text"
+        />
+        <div
+          class="row"
+        >
+          <div>
+            <img
+              alt="MacBook"
+              class="small"
+              src="https://picsum.photos/id/180/2400/1600"
+            />
+            <h3>
+              MacBook
+            </h3>
+            <div>
+              ₹140000
+            </div>
+            <div>
+              <button>
+                Add To Cart
+              </button>
+            </div>
+          </div>
+          <div>
+            <img
+              alt="Car"
+              class="small"
+              src="https://picsum.photos/id/111/4400/2656"
+            />
+            <h3>
+              Car
+            </h3>
+            <div>
+              ₹240000
+            </div>
+            <div>
+              <button>
+                Add To Cart
+              </button>
+            </div>
+          </div>
+          <div>
+            <img
+              alt="Shoes"
+              class="small"
+              src="https://picsum.photos/id/21/3008/2008"
+            />
+            <h3>
+              Shoes
+            </h3>
+            <div>
+              ₹1800
+            </div>
+            <div>
+              <button>
+                Add To Cart
+              </button>
+            </div>
+          </div>
+        </div>
+      </main>
+      <aside
+        class="block col-1"
+      >
+        <h2>
+          Cart Items
+        </h2>
+        <div>
+          <div>
+            Cart is empty
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</DocumentFragment>
+`;
