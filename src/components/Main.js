@@ -2,10 +2,15 @@ import Header from './Header';
 import Dashboard from './Dashboard';
 import Basket from './Basket';
 import {shoppingData} from '../Context';
-import { useContext,  useState } from 'react';
+import { useContext,  useState, useEffect } from 'react';
 import ContactUs from './ContactUs';
 function Main() {
-  // const [products,setProducts]  =useState(data.products); // use if not using context API
+  // const [products,setProducts] = useState(data.products); // use if not using context API
+  useEffect(() => {
+    setTimeout(() => {
+      alert("Your session is about to expire");
+  }, 1000)
+  }, []);
   const [cartItems, setCartItems] = useState([]);
   const {products}=useContext(shoppingData);
 
