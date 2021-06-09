@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {memo} from 'react';
 
-export default function Header(props) {
+function Header(props) {
+  console.log("From Header");
   return (
     <header className="block row center">
       <div>
@@ -16,8 +17,10 @@ export default function Header(props) {
           ) : (
             ''
           )}
-        </a>{' '}
+        </a>
       </div>
     </header>
   );
 }
+
+export default memo(Header);

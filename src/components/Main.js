@@ -3,14 +3,15 @@ import Dashboard from './Dashboard';
 import Basket from './Basket';
 import {shoppingData} from '../Context';
 import { useContext,  useState } from 'react';
-
+import ContactUs from './ContactUs';
 function Main() {
-  // const [products,setProducts]  =useState(data.products);
+  // const [products,setProducts]  =useState(data.products); // use if not using context API
   const [cartItems, setCartItems] = useState([]);
   const {products}=useContext(shoppingData);
 
   const onAdd = (product) => {
     const exist = cartItems.find((item) => item.id === product.id);
+    console.log(exist, "Exist");
     if (exist) {
       setCartItems(
         cartItems.map((item) =>
@@ -34,7 +35,8 @@ function Main() {
       );
     }
   };
-  
+  let info = "Contact us on 9140271427";
+  console.log(cartItems, "cartItems");
   return (
     <div>
       <Header countCartItems={cartItems.length}></Header>
@@ -46,6 +48,7 @@ function Main() {
           onRemove={onRemove}
         ></Basket>
       </div>
+      <ContactUs info={info}></ContactUs>
     </div>
   );
 }

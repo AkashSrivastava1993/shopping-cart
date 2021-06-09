@@ -8,6 +8,7 @@ export default function Dashboard(props) {
   const [searchedProd, setProduct] = useState([]);
 
   const searchProduct = (e, products) => {
+    console.log(e.target.value, "From Dahboard") // product.name.toLowerCase() === e.target.value.toLowerCase() for exact search
     let prod = products.filter(product => (product.name.toLowerCase().indexOf(e.target.value.toLowerCase()) !== -1));
     if(prod.length) {
       setSearch(false);
@@ -20,8 +21,7 @@ export default function Dashboard(props) {
       setProduct(prod);
     }
   }
-
-let a = searchedProd.length ? searchedProd.map((product) => (
+let prodDisplay = searchedProd.length ? searchedProd.map((product) => (
   <Product key={product.id} product={product} onAdd={onAdd}></Product>
 )) : products.map((product) => (
   <Product key={product.id} product={product} onAdd={onAdd}></Product>
@@ -32,7 +32,7 @@ let a = searchedProd.length ? searchedProd.map((product) => (
       <h2>Products</h2>
       <input type="text" id="myInput" onChange={(e) => searchProduct(e, props.products)} placeholder="Search for products..."></input>
       <div className="row">
-       {search ? <div>No items found</div> : a}
+       {search ? <div>No items found</div> : prodDisplay}
       </div>
     </main>
   );
