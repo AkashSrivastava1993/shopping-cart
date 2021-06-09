@@ -1,18 +1,37 @@
 import Header from './Header';
 import Dashboard from './Dashboard';
 import Basket from './Basket';
-import {shoppingData} from '../Context';
-import { useContext,  useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import ContactUs from './ContactUs';
+// import {shoppingData} from '../Context';
+
 function Main() {
-  // const [products,setProducts] = useState(data.products); // use if not using context API
+
+  // Don't Remove these comments
+  // For getting data we used three approaches here:
+
+  // 1) directly importing and using it in useState like below:
+  // const { products } = data; //import data from stub and use
+  // const [products,setProducts] = useState(data.products); use if not using context API or useEffect to fetch data
+
+  // 2) Context API by using useContext like below:
+  // const {products}=useContext(shoppingData);
+
+  // 3) The way we used in real world projects by useEffect and then storing and setting the value like below:
+
+  const [products,setProducts] = useState([]);
+
   useEffect(() => {
-    setTimeout(() => {
-      alert("Your session is about to expire");
-  }, 1000)
+    fetch("products.json") //here the actual API will be targeted
+    .then(resp => {
+      return resp.json();
+    })
+    .then(data => {
+      setProducts(data.products);
+    })
   }, []);
   const [cartItems, setCartItems] = useState([]);
-  const {products}=useContext(shoppingData);
+
 
   const onAdd = (product) => {
     const exist = cartItems.find((item) => item.id === product.id);

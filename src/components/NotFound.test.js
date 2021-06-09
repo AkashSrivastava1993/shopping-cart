@@ -1,9 +1,8 @@
 import { render } from '@testing-library/react';
-import App from './App';
+import NotFound from './NotFound';
 import React from 'react';
 
 it('renders', () => {
-  const { asFragment } = render(<App/>);
+  const { asFragment } = render(<NotFound/>);
   expect(asFragment()).toMatchSnapshot();
 });
-
