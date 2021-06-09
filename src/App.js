@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Main from './components/Main';
 import OrderPlaced from './components/OrderPlaced';
 import NotFound from './components/NotFound';
+
 function App() {
 
   return (

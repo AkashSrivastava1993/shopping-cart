@@ -1,11 +1,14 @@
 import Header from './Header';
 import Dashboard from './Dashboard';
 import Basket from './Basket';
-import data from '../stubs/data';
-import { useState } from 'react';
+import {shoppingData} from '../Context';
+import { useContext,  useState } from 'react';
+
 function Main() {
-  const { products } = data;
+  // const [products,setProducts]  =useState(data.products);
   const [cartItems, setCartItems] = useState([]);
+  const {products}=useContext(shoppingData);
+
   const onAdd = (product) => {
     const exist = cartItems.find((item) => item.id === product.id);
     if (exist) {
@@ -18,6 +21,7 @@ function Main() {
       setCartItems([...cartItems, { ...product, qty: 1 }]);
     }
   };
+
   const onRemove = (product) => {
     const exist = cartItems.find((item) => item.id === product.id);
     if (exist.qty === 1) {
@@ -30,6 +34,7 @@ function Main() {
       );
     }
   };
+  
   return (
     <div>
       <Header countCartItems={cartItems.length}></Header>
