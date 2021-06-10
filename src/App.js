@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 const OrderPlaced = React.lazy(() => import('./components/OrderPlaced'));
 const Main = React.lazy(() => import('./components/Main'));
 const NotFound = React.lazy(() => import('./components/NotFound'));
+const SignIn = React.lazy(() => import('./components/SignIn'));
 
 //Lazy loading for code splitting
 function App() {
@@ -14,6 +15,7 @@ function App() {
           <Switch>
             <Route exact path="/" component={Main} />
             <Route path="/ordered" component={OrderPlaced} />
+            <Route path="/signIn" component={SignIn} />
             <Route path="/*" component={NotFound} />
           </Switch>
         </Suspense>
