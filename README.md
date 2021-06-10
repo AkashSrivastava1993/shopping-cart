@@ -68,3 +68,20 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+Till now these concepts has been implemented in our demo:
+ 
+1) State & Props
+2) Child to Parent via callback
+3) useState
+4) useEffect
+5) useContext
+6) useRef
+7) useMemo
+8) Routing via react-router-dom
+9) HOC
+10) React.Memo
+11) React.lazy
+12) fetch
+13) Snapshot Testing

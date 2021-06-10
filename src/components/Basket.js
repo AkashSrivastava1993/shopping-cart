@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useMemo} from 'react';
 import { Link } from 'react-router-dom';
 
 export default function Basket(props) {
@@ -6,7 +6,18 @@ export default function Basket(props) {
   const itemsPrice = cartItems.reduce((a, c) => a + c.qty * c.price, 0);
   const taxPrice = itemsPrice * 0.14;
   const shippingPrice = itemsPrice > 2000 ? 0 : 20;
-  const totalPrice = itemsPrice + taxPrice + shippingPrice;
+
+  // const totalPrice = () => {
+  //   console.log("I am getting called");
+  //   return itemsPrice + taxPrice + shippingPrice;
+  // }
+  
+  // no re-rendering of the function will happen on action of other events.
+  const totalPrice = useMemo(() => {
+    console.log("useMEMO");
+    return itemsPrice + taxPrice + shippingPrice
+  }, [itemsPrice,taxPrice,shippingPrice]);
+
   return (
     <aside className="block col-1">
       <h2>Cart Items</h2>
