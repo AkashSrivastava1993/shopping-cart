@@ -1,7 +1,7 @@
 import Header from './Header';
 import Dashboard from './Dashboard';
 import Basket from './Basket';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useLayoutEffect } from 'react';
 import ContactUs from './ContactUs';
 // import {shoppingData} from '../Context';
 
@@ -20,6 +20,15 @@ function Main() {
   // 3) The way we used in real world projects by useEffect and then storing and setting the value like below:
 
   const [products,setProducts] = useState([]);
+  const [layoutEffect, setLayout] = useState("");
+
+  useLayoutEffect(() => {
+    if(products.length === 0) {
+      setLayout("LOADING.....................................................................................") ;
+    } else {
+      setLayout("");
+    };
+  },[products.length]);
 
   useEffect(() => {
     fetch("products.json") //here the actual API will be targeted
@@ -63,6 +72,7 @@ function Main() {
   console.log(cartItems, "cartItems");
   return (
     <div>
+    {layoutEffect}
       <Header countCartItems={cartItems.length}></Header>
       <div className="row">
         <Dashboard products={products} onAdd={onAdd}></Dashboard>
