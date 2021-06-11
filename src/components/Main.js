@@ -1,7 +1,7 @@
 import Header from './Header';
 import Dashboard from './Dashboard';
 import Basket from './Basket';
-import { useState, useEffect, useLayoutEffect } from 'react';
+import { useState, useEffect, useLayoutEffect, useCallback } from 'react';
 import ContactUs from './ContactUs';
 // import {shoppingData} from '../Context';
 
@@ -41,6 +41,16 @@ function Main() {
   }, []);
   const [cartItems, setCartItems] = useState([]);
 
+// In this example, the <ContactUs /> child component is re-rendered because the info prop is passed a new callback with a new reference.
+
+// Note that even though the ContactUs child component uses React.memo to optimize performance, it is still re-rendered.
+
+// How can this be fixed to prevent <ContactUs /> from re-rendering needlessly? -> By useCallback
+  const contactInfo = "Contact us on 9140271427";
+  const info = useCallback(() => {
+    return contactInfo;
+  },[contactInfo]);
+
 
   const onAdd = (product) => {
     const exist = cartItems.find((item) => item.id === product.id);
@@ -68,7 +78,7 @@ function Main() {
       );
     }
   };
-  let info = "Contact us on 9140271427";
+
   console.log(cartItems, "cartItems");
   return (
     <div>
