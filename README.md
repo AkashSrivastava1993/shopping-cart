@@ -87,3 +87,4 @@ Following concepts have been implemented till now in our demo:
 13) React.lazy
 14) fetch
 15) Snapshot Testing
+16) async/await syntax

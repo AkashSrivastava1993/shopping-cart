@@ -19,37 +19,49 @@ function Main() {
 
   // 3) The way we used in real world projects by useEffect and then storing and setting the value like below:
 
-  const [products,setProducts] = useState([]);
+
+  // JS fetch()
+  // useEffect(() => {
+  //   fetch("products.json") //here the actual API will be targeted
+  //   .then(resp => {
+  //     return resp.json();
+  //   })
+  //   .then(data => {
+  //     setProducts(data.products);
+  //   })
+  // }, []);
+  // const [cartItems, setCartItems] = useState([]);
+
+  //async/await syntax below:
+  useEffect(() => getProducts(), []);
+  const [cartItems, setCartItems] = useState([]);
+
+  const getProducts = async () => {
+    let res = await fetch("products.json");
+    let data = await res.json();
+    return setProducts(data.products);
+  }
+
+  const [products, setProducts] = useState([]);
   const [layoutEffect, setLayout] = useState("");
 
   useLayoutEffect(() => {
-    if(products.length === 0) {
-      setLayout("LOADING.....................................................................................") ;
+    if (products.length === 0) {
+      setLayout("LOADING.....................................................................................");
     } else {
       setLayout("");
     };
-  },[products.length]);
+  }, [products.length]);
 
-  useEffect(() => {
-    fetch("products.json") //here the actual API will be targeted
-    .then(resp => {
-      return resp.json();
-    })
-    .then(data => {
-      setProducts(data.products);
-    })
-  }, []);
-  const [cartItems, setCartItems] = useState([]);
+  // In this example, the <ContactUs /> child component is re-rendered because the info prop is passed a new callback with a new reference.
 
-// In this example, the <ContactUs /> child component is re-rendered because the info prop is passed a new callback with a new reference.
+  // Note that even though the ContactUs child component uses React.memo to optimize performance, it is still re-rendered.
 
-// Note that even though the ContactUs child component uses React.memo to optimize performance, it is still re-rendered.
-
-// How can this be fixed to prevent <ContactUs /> from re-rendering needlessly? -> By useCallback
+  // How can this be fixed to prevent <ContactUs /> from re-rendering needlessly? -> By useCallback
   const contactInfo = "Contact us on 9140271427";
   const info = useCallback(() => {
     return contactInfo;
-  },[contactInfo]);
+  }, [contactInfo]);
 
 
   const onAdd = (product) => {
@@ -79,10 +91,9 @@ function Main() {
     }
   };
 
-  console.log(cartItems, "cartItems");
   return (
     <div>
-    {layoutEffect}
+      {layoutEffect}
       <Header countCartItems={cartItems.length}></Header>
       <div className="row">
         <Dashboard products={products} onAdd={onAdd}></Dashboard>
