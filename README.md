@@ -81,10 +81,11 @@ Following concepts have been implemented till now in our demo:
 7) useMemo
 8) useLayoutEffect
 9) useCallback
-10) Routing via react-router-dom
-11) HOC
-12) React.Memo
-13) React.lazy
-14) fetch
-15) Snapshot Testing
-16) async/await syntax
+10) useReducer
+11) Routing via react-router-dom
+12) HOC
+13) React.Memo
+14) React.lazy
+15) fetch
+16) Snapshot Testing
+17) async/await syntax
