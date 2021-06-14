@@ -91,3 +91,4 @@ Following concepts have been implemented till now in our demo:
 17) async/await syntax
 18) Snapshot testing
 19) React Portal
+20) React Profiler

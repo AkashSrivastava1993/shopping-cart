@@ -1,7 +1,7 @@
 import Header from './Header';
 import Dashboard from './Dashboard';
 import Basket from './Basket';
-import { useState, useEffect, useLayoutEffect, useCallback } from 'react';
+import { useState, useEffect, useLayoutEffect, useCallback, Profiler } from 'react';
 import ContactUs from './ContactUs';
 import Copyrigtht from './Copyright';
 // import {shoppingData} from '../Context';
@@ -92,17 +92,29 @@ function Main() {
     }
   };
 
+  const basketProfile = (
+    id, // the "id" prop of the Profiler tree that has just committed
+    phase, // either "mount" (if the tree just mounted) or "update" (if it re-rendered)
+    actualDuration, // time spent rendering the committed update
+    baseDuration, // estimated time to render the entire subtree without memoization
+    startTime, // when React began rendering this update
+    commitTime, // when React committed this update
+    interactions // the Set of interactions belonging to this update
+  ) => {
+    console.log(id, phase, actualDuration, baseDuration, startTime, commitTime, interactions, "basket profile")
+  }
+
   return (
     <div>
       {layoutEffect}
       <Header countCartItems={cartItems.length}></Header>
       <div className="row">
         <Dashboard products={products} onAdd={onAdd}></Dashboard>
-        <Basket
+        <Profiler id="BasketComp" onRender={basketProfile}><Basket
           cartItems={cartItems}
           onAdd={onAdd}
           onRemove={onRemove}
-        ></Basket>
+        ></Basket></Profiler>
       </div>
       <ContactUs info={info}></ContactUs>
       <Copyrigtht/>
