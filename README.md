@@ -87,5 +87,7 @@ Following concepts have been implemented till now in our demo:
 13) React.Memo
 14) React.lazy
 15) fetch
-16) Snapshot Testing
+16) React testing Library
 17) async/await syntax
+18) Snapshot testing
+19) React Portal

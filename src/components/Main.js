@@ -3,6 +3,7 @@ import Dashboard from './Dashboard';
 import Basket from './Basket';
 import { useState, useEffect, useLayoutEffect, useCallback } from 'react';
 import ContactUs from './ContactUs';
+import Copyrigtht from './Copyright';
 // import {shoppingData} from '../Context';
 
 function Main() {
@@ -104,6 +105,7 @@ function Main() {
         ></Basket>
       </div>
       <ContactUs info={info}></ContactUs>
+      <Copyrigtht/>
     </div>
   );
 }
