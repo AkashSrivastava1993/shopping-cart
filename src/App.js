@@ -16,7 +16,6 @@ function App() {
             <Route exact path="/" component={Main} />
             <Route path="/ordered" component={OrderPlaced} />
             <Route path="/signIn" component={SignIn} />
-            <Route path="/*" component={NotFound} />
           </Switch>
         </Suspense>
       </Router>
