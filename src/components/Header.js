@@ -1,5 +1,5 @@
 import React, {memo} from 'react';
-import { useHistory, NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 function Header(props) {
   const history = useHistory();
   console.log("From Header", history);
@@ -19,7 +19,7 @@ function Header(props) {
             ''
           )}
         </a>
-        {history.location.state ? "Hello Admin" : <NavLink to="/signIn">Sign In</NavLink>}
+        {history.location.state ? `Hello ${history.location.state.user}` : <NavLink to="/signIn">Sign In</NavLink>}
       </div>
     </header>
   );

@@ -20,8 +20,13 @@ export default function SignIn() {
                 return { ...state, password: action.payload }
             case 'CLICK':
                 console.log(state, "STATE");
-                if (state.userName === "admin" && state.password === "admin") {
-                    history.push('./', "admin");
+                if (state.userName === state.password) {
+                    history.push({
+                        pathname: '/',
+                        state: { user: state.userName }
+                    });
+                   // history.push('./', "admin");
+                    // <NavLink to='/'>Shopping Cart</NavLink>
                     return { ...state }
                 } else {
                     nameRef.current.focus();
