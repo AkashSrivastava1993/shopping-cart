@@ -1,0 +1,22 @@
+{
+    "products":[
+       {
+          "id":"1",
+          "name":"MacBook",
+          "price":140000,
+          "image":"/images/laptop.jpg"
+       },
+       {
+          "id":"2",
+          "name":"Car",
+          "price":240000,
+          "image":"/images/car.jpg"
+       },
+       {
+          "id":"3",
+          "name":"Shoes",
+          "price":1800,
+          "image":"/images/shoes.jpg"
+       }
+    ]
+  }
