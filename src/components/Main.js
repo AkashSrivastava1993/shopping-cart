@@ -22,26 +22,33 @@ function Main() {
 
 
   // JS fetch()
-  // useEffect(() => {
-  //   fetch("products.json") //here the actual API will be targeted
-  //   .then(resp => {
-  //     return resp.json();
-  //   })
-  //   .then(data => {
-  //     setProducts(data.products);
-  //   })
-  // }, []);
-  // const [cartItems, setCartItems] = useState([]);
+  useEffect(() => {
+    fetch("products.json",
+    {
+      headers : { 
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+       }
 
-  //async/await syntax below:
-  useEffect(() => getProducts(), []);
+    }) //here the actual API will be targeted
+    .then(resp => {
+      return resp.json();
+    })
+    .then(data => {
+      setProducts(data.products);
+    })
+  }, []);
   const [cartItems, setCartItems] = useState([]);
 
-  const getProducts = async () => {
-    let res = await fetch("products.json");
-    let data = await res.json();
-    return setProducts(data.products);
-  }
+  //async/await syntax below:
+  // useEffect(() => getProducts(), []);
+  // const [cartItems, setCartItems] = useState([]);
+
+  // const getProducts = async () => {
+  //   let res = await fetch("products.json");
+  //   let data = await res.json();
+  //   return setProducts(data.products);
+  // }
 
   const [products, setProducts] = useState([]);
   const [layoutEffect, setLayout] = useState("");
