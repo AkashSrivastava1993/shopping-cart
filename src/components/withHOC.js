@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import {NavLink} from 'react-router-dom';
 
 const withHOC = OriginalComponent => {
   class HOC extends React.Component {
@@ -6,7 +7,7 @@ const withHOC = OriginalComponent => {
         return (
             <div style={{textAlign: 'center'}}>
              <OriginalComponent/>
-                <a href='/'>Shopping Cart</a>
+                <NavLink to='/'>Shopping Cart</NavLink>
             </div>
         );
     }

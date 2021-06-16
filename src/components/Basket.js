@@ -1,5 +1,5 @@
 import React, {useMemo} from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 export default function Basket(props) {
   const { cartItems, onAdd, onRemove } = props;
@@ -69,7 +69,7 @@ export default function Basket(props) {
             </div>
             <hr />
             <div className="row">
-                <Link to='/ordered'>Place Order</Link>
+                <NavLink to='/ordered'>Place Order</NavLink>
             </div>
           </>
         )}
