@@ -1,7 +1,8 @@
 import React, {useMemo} from 'react';
-import { NavLink } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 export default function Basket(props) {
+  const history = useHistory();
   const { cartItems, onAdd, onRemove } = props;
   const itemsPrice = cartItems.reduce((a, c) => a + c.qty * c.price, 0);
   const taxPrice = itemsPrice * 0.14;
@@ -17,7 +18,12 @@ export default function Basket(props) {
     console.log("useMEMO");
     return itemsPrice + taxPrice + shippingPrice
   }, [itemsPrice,taxPrice,shippingPrice]);
-
+   const handleClick = () => {
+     let confirm = window.confirm("Are you sure you want to place the orders");
+     if(confirm === true) {
+     history.push('/ordered');
+     }
+   }
   return (
     <aside className="block col-1">
       <h2>Cart Items</h2>
@@ -69,7 +75,7 @@ export default function Basket(props) {
             </div>
             <hr />
             <div className="row">
-                <NavLink to='/ordered'>Place Order</NavLink>
+                <button onClick={() => handleClick()}>Place Order</button>
             </div>
           </>
         )}
