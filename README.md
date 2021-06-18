@@ -92,3 +92,7 @@ Following concepts have been implemented till now in our demo:
 18) Snapshot testing
 19) React Portal
 20) React Profiler
+21) useHistory
+22) hashrouter // for deployment in github pages have to replace it with browserrouter
+23) browserrouter // just replace it with hashrouter
+24) Redux for state management
