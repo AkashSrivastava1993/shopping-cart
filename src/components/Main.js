@@ -1,3 +1,4 @@
+import { connect } from 'react-redux';
 import Header from './Header';
 import Dashboard from './Dashboard';
 import Basket from './Basket';
@@ -8,7 +9,7 @@ import Toggle from 'react-toggle';
 import "react-toggle/style.css";
 // import {shoppingData} from '../Context';
 
-function Main() {
+function Main(props) {
 
   // Don't Remove these comments
   // For getting data we used three approaches here:
@@ -22,10 +23,10 @@ function Main() {
 
   // 3) The way we used in real world projects by useEffect and then storing and setting the value like below:
 
-  const [theme, setTheme] = useState("white");
+  // const [theme, setTheme] = useState("white");
   // JS fetch()
   useEffect(() => {
-     document.body.style.backgroundColor = theme;
+     document.body.style.backgroundColor = props.theme;
     fetch("products.json",
     {
       headers : { 
@@ -40,7 +41,7 @@ function Main() {
     .then(data => {
       setProducts(data.products);
     })
-  }, [theme]);
+  }, [props.theme]);
   const [cartItems, setCartItems] = useState([]);
 
   //async/await syntax below:
@@ -121,8 +122,8 @@ function Main() {
       <label htmlFor='cheese-status'>Select Theme:</label>
       <Toggle
           id='cheese-status'
-          defaultChecked={theme}
-          onChange={()=> { theme === "white" ? setTheme("brown") : setTheme("white") }} />
+          defaultChecked={props.theme}
+          onChange={()=> { props.theme === "white" ? props.setTheme("brown") : props.setTheme("white") }} />
       <div className="row">
         <Dashboard products={products} onAdd={onAdd}></Dashboard>
         <Profiler id="BasketComp" onRender={basketProfile}><Basket
@@ -137,4 +138,14 @@ function Main() {
   );
 }
 
-export default Main;
+const mapStateToProps = state => {
+  return {
+  theme: state.theme
+  }
+}
+const mapDispatchToProps = dispatch => {
+  return {
+  setTheme: (theme) => dispatch({ type: "THEME CHANGED", payload: theme })
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps) (Main);
