@@ -4,6 +4,8 @@ import Basket from './Basket';
 import { useState, useEffect, useLayoutEffect, useCallback, Profiler } from 'react';
 import ContactUs from './ContactUs';
 import Copyrigtht from './Copyright';
+import Toggle from 'react-toggle';
+import "react-toggle/style.css";
 // import {shoppingData} from '../Context';
 
 function Main() {
@@ -20,9 +22,10 @@ function Main() {
 
   // 3) The way we used in real world projects by useEffect and then storing and setting the value like below:
 
-
+  const [theme, setTheme] = useState("white");
   // JS fetch()
   useEffect(() => {
+     document.body.style.backgroundColor = theme;
     fetch("products.json",
     {
       headers : { 
@@ -37,7 +40,7 @@ function Main() {
     .then(data => {
       setProducts(data.products);
     })
-  }, []);
+  }, [theme]);
   const [cartItems, setCartItems] = useState([]);
 
   //async/await syntax below:
@@ -115,6 +118,11 @@ function Main() {
     <div>
       {layoutEffect}
       <Header countCartItems={cartItems.length}></Header>
+      <label htmlFor='cheese-status'>Select Theme:</label>
+      <Toggle
+          id='cheese-status'
+          defaultChecked={theme}
+          onChange={()=> { theme === "white" ? setTheme("brown") : setTheme("white") }} />
       <div className="row">
         <Dashboard products={products} onAdd={onAdd}></Dashboard>
         <Profiler id="BasketComp" onRender={basketProfile}><Basket

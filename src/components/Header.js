@@ -1,5 +1,6 @@
-import React, {memo} from 'react';
+import React, { memo } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
+
 function Header(props) {
   const history = useHistory();
   console.log("From Header", history);
