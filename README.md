@@ -96,3 +96,5 @@ Following concepts have been implemented till now in our demo:
 22) hashrouter // for deployment in github pages have to replace it with browserrouter
 23) browserrouter // just replace it with hashrouter
 24) Redux for state management
+25) String literals
+26) Mobx also implemented for state management

@@ -7,6 +7,8 @@ import ContactUs from './ContactUs';
 import Copyrigtht from './Copyright';
 import Toggle from 'react-toggle';
 import "react-toggle/style.css";
+import { observer } from 'mobx-react-lite';
+import { mobxStore } from './AppStore';
 // import {shoppingData} from '../Context';
 
 function Main(props) {
@@ -25,6 +27,9 @@ function Main(props) {
 
   // const [theme, setTheme] = useState("white");
   // JS fetch()
+ useEffect(() => {
+          document.title = mobxStore.mobxTitle;
+       },[mobxStore.mobxTitle]);
   useEffect(() => {
      document.body.style.backgroundColor = props.theme;
     fetch("products.json",
@@ -114,7 +119,6 @@ function Main(props) {
   ) => {
     console.log(id, phase, actualDuration, baseDuration, startTime, commitTime, interactions, "basket profile")
   }
-
   return (
     <div>
       {layoutEffect}
@@ -124,6 +128,11 @@ function Main(props) {
           id='cheese-status'
           defaultChecked={props.theme}
           onChange={()=> { props.theme === "white" ? props.setTheme("brown") : props.setTheme("white") }} />
+      <label htmlFor='cheese-status'>{`Title of the App: ${mobxStore.mobxTitle}`}</label>
+      <Toggle
+          id='cheese-status'
+          defaultChecked={true}
+          onChange={()=> { mobxStore.mobxTitle === "React Redux App" ? mobxStore.updateTitle("React Mobx App") : mobxStore.updateTitle("React Redux App") }} />
       <div className="row">
         <Dashboard products={products} onAdd={onAdd}></Dashboard>
         <Profiler id="BasketComp" onRender={basketProfile}><Basket
@@ -148,4 +157,4 @@ const mapDispatchToProps = dispatch => {
   setTheme: (theme) => dispatch({ type: "THEME CHANGED", payload: theme })
   }
 }
-export default connect(mapStateToProps, mapDispatchToProps) (Main);
+export default connect(mapStateToProps, mapDispatchToProps) (observer(Main));
