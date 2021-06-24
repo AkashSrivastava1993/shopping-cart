@@ -125,12 +125,12 @@ function Main(props) {
       <Header countCartItems={cartItems.length}></Header>
       <label htmlFor='cheese-status'>Select Theme:</label>
       <Toggle
-          id='cheese-status'
+          id='theme-status'
           defaultChecked={props.theme}
           onChange={()=> { props.theme === "white" ? props.setTheme("brown") : props.setTheme("white") }} />
       <label htmlFor='cheese-status'>{`Title of the App: ${mobxStore.mobxTitle}`}</label>
       <Toggle
-          id='cheese-status'
+          id='state-status'
           defaultChecked={true}
           onChange={()=> { mobxStore.mobxTitle === "React Redux App" ? mobxStore.updateTitle("React Mobx App") : mobxStore.updateTitle("React Redux App") }} />
       <div className="row">
