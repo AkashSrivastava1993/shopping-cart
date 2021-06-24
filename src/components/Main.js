@@ -27,25 +27,25 @@ function Main(props) {
 
   // const [theme, setTheme] = useState("white");
   // JS fetch()
- useEffect(() => {
-          document.title = mobxStore.mobxTitle;
-       },[mobxStore.mobxTitle]);
   useEffect(() => {
-     document.body.style.backgroundColor = props.theme;
+    document.title = mobxStore.mobxTitle;
+  }, [mobxStore.mobxTitle]);
+  useEffect(() => {
+    document.body.style.backgroundColor = props.theme;
     fetch("products.json",
-    {
-      headers : { 
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-       }
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        }
 
-    }) //here the actual API will be targeted
-    .then(resp => {
-      return resp.json();
-    })
-    .then(data => {
-      setProducts(data.products);
-    })
+      }) //here the actual API will be targeted
+      .then(resp => {
+        return resp.json();
+      })
+      .then(data => {
+        setProducts(data.products);
+      })
   }, [props.theme]);
   const [cartItems, setCartItems] = useState([]);
 
@@ -123,16 +123,17 @@ function Main(props) {
     <div>
       {layoutEffect}
       <Header countCartItems={cartItems.length}></Header>
-      <label htmlFor='cheese-status'>Select Theme:</label>
-      <Toggle
+      <div className="toggle"><label htmlFor='cheese-status'>Select Theme:</label>
+        <Toggle
           id='theme-status'
           defaultChecked={props.theme}
-          onChange={()=> { props.theme === "white" ? props.setTheme("brown") : props.setTheme("white") }} />
-      <label htmlFor='cheese-status'>{`Title of the App: ${mobxStore.mobxTitle}`}</label>
-      <Toggle
+          onChange={() => { props.theme === "white" ? props.setTheme("brown") : props.setTheme("white") }} />
+        <label htmlFor='cheese-status'>{`Title of the App: ${mobxStore.mobxTitle}`}</label>
+        <Toggle
           id='state-status'
           defaultChecked={true}
-          onChange={()=> { mobxStore.mobxTitle === "React Redux App" ? mobxStore.updateTitle("React Mobx App") : mobxStore.updateTitle("React Redux App") }} />
+          onChange={() => { mobxStore.mobxTitle === "React Redux App" ? mobxStore.updateTitle("React Mobx App") : mobxStore.updateTitle("React Redux App") }} />
+      </div>
       <div className="row">
         <Dashboard products={products} onAdd={onAdd}></Dashboard>
         <Profiler id="BasketComp" onRender={basketProfile}><Basket
@@ -142,19 +143,19 @@ function Main(props) {
         ></Basket></Profiler>
       </div>
       <ContactUs info={info}></ContactUs>
-      <Copyrigtht/>
+      <Copyrigtht />
     </div>
   );
 }
 
 const mapStateToProps = state => {
   return {
-  theme: state.theme
+    theme: state.theme
   }
 }
 const mapDispatchToProps = dispatch => {
   return {
-  setTheme: (theme) => dispatch({ type: "THEME CHANGED", payload: theme })
+    setTheme: (theme) => dispatch({ type: "THEME CHANGED", payload: theme })
   }
 }
-export default connect(mapStateToProps, mapDispatchToProps) (observer(Main));
+export default connect(mapStateToProps, mapDispatchToProps)(observer(Main));
