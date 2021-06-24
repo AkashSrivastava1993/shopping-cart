@@ -4,7 +4,7 @@ export default function Product(props) {
   const { product, onAdd } = props;
   const prodDetails = (product) => {
     if (product) {
-      let abc = window.open('/#/prodDetails')
+      let abc = window.open('https://akashsrivastava1993.github.io/shopping-cart/#/prodDetails')
       abc.image = product.image;
       abc.name = product.name;
       abc.price = product.price;
