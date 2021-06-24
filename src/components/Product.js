@@ -4,7 +4,7 @@ export default function Product(props) {
   const { product, onAdd } = props;
   return (
     <div>
-      <img className="small" src={product.image} alt={product.name} />
+      <img className="small" src={product.image} alt={product.name} onClick={()=> window.open(product.image)}/>
       <h3>{product.name}</h3>
       <div>₹{product.price}</div>
       <div>
