@@ -54,7 +54,7 @@ button {
   border-radius: 0.5rem;
   border: 0.1rem #404040 solid;
   background-color: #f0c040;
-  width: auto;
+  width: 100%;
   cursor: pointer;
 }
 button.add {
@@ -85,6 +85,10 @@ button.badge {
 
 .toggle {
   display: flex;
+}
+
+.toggle svg {
+  display: none;
 }
 
 @media(min-width: 768px) {
