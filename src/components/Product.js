@@ -2,13 +2,21 @@ import React from 'react';
 
 export default function Product(props) {
   const { product, onAdd } = props;
+  const prodDetails = (product) => {
+    if (product) {
+      let abc = window.open(window.location.origin + '/#/prodDetails')
+      abc.image = product.image;
+      abc.name = product.name;
+      abc.price = product.price;
+    }
+  }
   return (
     <div>
-      <img className="small" src={product.image} alt={product.name} onClick={()=> window.open(product.image)}/>
-      <h3>{product.name}</h3>
-      <div>₹{product.price}</div>
+      <img className="small" src={window.image || product.image} alt={window.name || product.name} onClick={() => prodDetails(product)} />
+      <h3>{window.name || product.name}</h3>
+      <div>₹{window.price || product.price}</div>
       <div>
-        <button onClick={() => onAdd(product)}>Add To Cart</button>
+        {product ? <button onClick={() => onAdd(product)}>Add To Cart</button> : ""}
       </div>
     </div>
   );
