@@ -94,6 +94,7 @@ button.badge {
 @media(min-width: 768px) {
   .row {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
   }
   .row.center {

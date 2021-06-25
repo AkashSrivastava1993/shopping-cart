@@ -64,7 +64,7 @@ function Main(props) {
 
   useLayoutEffect(() => {
     if (products.length === 0) {
-      setLayout("LOADING...😃😃😃😃😃😃😃😃😃😃😃😃😃😃😃😃😃😃😃😃😃😃😃😃😃😃😃😃😃😃😃😃😃😃😃😃😃😃");
+      setLayout("LOADING...");
     } else {
       setLayout("");
     };
