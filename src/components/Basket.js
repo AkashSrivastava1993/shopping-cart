@@ -1,8 +1,9 @@
-import React, {useMemo} from 'react';
+import React, { useMemo, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 export default function Basket(props) {
   const history = useHistory();
+  const [to, setTo] = useState('');
   const { cartItems, onAdd, onRemove } = props;
   const itemsPrice = cartItems.reduce((a, c) => a + c.qty * c.price, 0);
   const taxPrice = itemsPrice * 0.14;
@@ -12,18 +13,37 @@ export default function Basket(props) {
   //   console.log("I am getting called");
   //   return itemsPrice + taxPrice + shippingPrice;
   // }
-  
+
   // no re-rendering of the function will happen on action of other events.
   const totalPrice = useMemo(() => {
     console.log("useMEMO");
     return itemsPrice + taxPrice + shippingPrice
-  }, [itemsPrice,taxPrice,shippingPrice]);
-   const handleClick = () => {
-     let confirm = window.confirm("Are you sure you want to place the orders");
-     if(confirm === true) {
-     history.push('/ordered');
-     }
-   }
+  }, [itemsPrice, taxPrice, shippingPrice]);
+
+  const enterPhn = (e) => {
+    console.log(e.target.value);
+    setTo(e.target.value);
+  }
+  const handleClick = (e) => {
+    e.preventDefault();
+    let confirm = window.confirm("Are you sure you want to place the orders");
+    if (confirm === true) {
+      if(to !== '') {
+      fetch('https://api.twilio.com/2010-04-01/Accounts/AC6135beb3be3d2796a797ce44ae616f95/Messages.json', {
+        method: 'POST',
+        headers: {
+          'Authorization': 'Basic ' + btoa('AC6135beb3be3d2796a797ce44ae616f95:87489ee0c55fe1f5525c24a4f5bbd75d')
+        },
+        body: new URLSearchParams({
+          'To': '+919140271427',
+          'Body': 'Item has been dispatched. It will be at your door soon from Shopping Cart.',
+          'From': '+18325328070',
+        })
+      })
+    }
+      history.push('/ordered');
+    }
+  }
   return (
     <aside className="block col-1">
       <h2>Cart Items</h2>
@@ -74,8 +94,11 @@ export default function Basket(props) {
               </div>
             </div>
             <hr />
+            <div style={{ paddingBottom: '15px' }}><label for="phone">Enter Mobile Number:</label>
+              <input type="text" id="phone" name="phone" placeholder="Please type your number with country code" onChange={(e) => enterPhn(e)}></input><br />
+            </div>
             <div className="row">
-                <button onClick={() => handleClick()}>Place Order</button>
+              <button onClick={(e) => handleClick(e)}>Place Order</button>
             </div>
           </>
         )}

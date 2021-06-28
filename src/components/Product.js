@@ -1,9 +1,7 @@
 import React, { useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
 
 export default function Product(props) {
   const { product, onAdd } = props;
-  const history = useHistory();
   
   useEffect(() => {
     let prodAdd = document.getElementById("prodAdd");
