@@ -32,10 +32,10 @@ export default function Basket(props) {
       fetch('https://api.twilio.com/2010-04-01/Accounts/AC6135beb3be3d2796a797ce44ae616f95/Messages.json', {
         method: 'POST',
         headers: {
-          'Authorization': 'Basic ' + btoa('AC6135beb3be3d2796a797ce44ae616f95:87489ee0c55fe1f5525c24a4f5bbd75d')
+          'Authorization': 'Basic ' + btoa('AC6135beb3be3d2796a797ce44ae616f95:ebfe9c606ce68e9aa60cfcc88c0505a6')
         },
         body: new URLSearchParams({
-          'To': '+919140271427',
+          'To': to,
           'Body': 'Item has been dispatched. It will be at your door soon from Shopping Cart.',
           'From': '+18325328070',
         })
