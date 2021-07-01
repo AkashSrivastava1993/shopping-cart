@@ -98,3 +98,7 @@ Following concepts have been implemented till now in our demo:
 24) Redux for state management
 25) String literals
 26) Mobx also implemented for state management
+27) Media query css
+28) Integration with Twilio for sending sms on registerd mobile number
+29) Hosting with gh pages
+30) Object Destructuring

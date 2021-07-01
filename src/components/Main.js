@@ -29,7 +29,7 @@ function Main(props) {
   // JS fetch()
   useEffect(() => {
     document.title = mobxStore.mobxTitle;
-  }, [mobxStore.mobxTitle]);
+  });
   useEffect(() => {
     document.body.style.backgroundColor = props.theme;
     fetch("products.json",
@@ -117,7 +117,7 @@ function Main(props) {
     commitTime, // when React committed this update
     interactions // the Set of interactions belonging to this update
   ) => {
-    console.log(id, phase, actualDuration, baseDuration, startTime, commitTime, interactions, "basket profile")
+    // console.log(id, phase, actualDuration, baseDuration, startTime, commitTime, interactions, "basket profile")
   }
   return (
     <div>
@@ -126,7 +126,7 @@ function Main(props) {
       <div className="toggle"><label htmlFor='cheese-status'>Select Theme:</label>
         <Toggle
           id='theme-status'
-          defaultChecked={props.theme}
+          defaultChecked={true}
           onChange={() => { props.theme === "white" ? props.setTheme("brown") : props.setTheme("white") }} />
         <label htmlFor='cheese-status'>{`Title of the App: ${mobxStore.mobxTitle}`}</label>
         <Toggle

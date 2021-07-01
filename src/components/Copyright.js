@@ -1,9 +1,13 @@
 import ReactDOM from 'react-dom';
+import {memo} from 'react';
 
-export default function Copyright() {
+function Copyright() {
+    console.log("From Copyright");
     return(
         ReactDOM.createPortal(
         <footer>Copyright © 2021 Shoping Cart</footer>,
         document.getElementById('portal-root'))
     );
 }
+
+export default memo(Copyright);

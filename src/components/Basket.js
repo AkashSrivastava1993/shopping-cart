@@ -94,7 +94,7 @@ export default function Basket(props) {
               </div>
             </div>
             <hr />
-            <div style={{ paddingBottom: '15px' }}><label for="phone">Enter Mobile Number:</label>
+            <div style={{ paddingBottom: '15px' }}><label htmlFor="phone">Enter Mobile Number:</label>
               <input type="text" id="phone" name="phone" placeholder="Please type your number with country code" onChange={(e) => enterPhn(e)}></input><br />
             </div>
             <div className="row">
