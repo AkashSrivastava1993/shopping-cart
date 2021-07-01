@@ -3,8 +3,8 @@
     "main.css": "/shopping-cart/static/css/main.13965cd0.chunk.css",
     "main.js": "/shopping-cart/static/js/main.5f2c2334.chunk.js",
     "main.js.map": "/shopping-cart/static/js/main.5f2c2334.chunk.js.map",
-    "runtime-main.js": "/shopping-cart/static/js/runtime-main.5601e8a8.js",
-    "runtime-main.js.map": "/shopping-cart/static/js/runtime-main.5601e8a8.js.map",
+    "runtime-main.js": "/shopping-cart/static/js/runtime-main.e48b7ffd.js",
+    "runtime-main.js.map": "/shopping-cart/static/js/runtime-main.e48b7ffd.js.map",
     "static/js/2.9b65835c.chunk.js": "/shopping-cart/static/js/2.9b65835c.chunk.js",
     "static/js/2.9b65835c.chunk.js.map": "/shopping-cart/static/js/2.9b65835c.chunk.js.map",
     "static/css/3.65aefc5a.chunk.css": "/shopping-cart/static/css/3.65aefc5a.chunk.css",
@@ -14,8 +14,8 @@
     "static/js/4.99bb597a.chunk.js.map": "/shopping-cart/static/js/4.99bb597a.chunk.js.map",
     "static/js/5.83c77a42.chunk.js": "/shopping-cart/static/js/5.83c77a42.chunk.js",
     "static/js/5.83c77a42.chunk.js.map": "/shopping-cart/static/js/5.83c77a42.chunk.js.map",
-    "static/js/6.111ef272.chunk.js": "/shopping-cart/static/js/6.111ef272.chunk.js",
-    "static/js/6.111ef272.chunk.js.map": "/shopping-cart/static/js/6.111ef272.chunk.js.map",
+    "static/js/6.01257de7.chunk.js": "/shopping-cart/static/js/6.01257de7.chunk.js",
+    "static/js/6.01257de7.chunk.js.map": "/shopping-cart/static/js/6.01257de7.chunk.js.map",
     "static/js/7.6ad55288.chunk.js": "/shopping-cart/static/js/7.6ad55288.chunk.js",
     "static/js/7.6ad55288.chunk.js.map": "/shopping-cart/static/js/7.6ad55288.chunk.js.map",
     "static/js/8.ddd47a92.chunk.js": "/shopping-cart/static/js/8.ddd47a92.chunk.js",
@@ -29,7 +29,7 @@
     "static/js/3.0642d339.chunk.js.LICENSE.txt": "/shopping-cart/static/js/3.0642d339.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.5601e8a8.js",
+    "static/js/runtime-main.e48b7ffd.js",
     "static/js/2.9b65835c.chunk.js",
     "static/css/main.13965cd0.chunk.css",
     "static/js/main.5f2c2334.chunk.js"
